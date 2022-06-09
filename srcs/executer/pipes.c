@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   pipes.c                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ncallie <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/01 14:37:12 by ncallie           #+#    #+#             */
-/*   Updated: 2022/03/05 18:40:06 by ncallie          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
 void	exec_builtin_hdoc(t_mini_shell *in, t_list *arg_list)
@@ -17,7 +5,7 @@ void	exec_builtin_hdoc(t_mini_shell *in, t_list *arg_list)
 	t_arg	*aux;
 	int		i;
 
-	i = 0;
+	i = -1;
 	aux = (t_arg *)arg_list->content;
 	in->split_in = matrix_dup(aux->arg);
 	in->q_state = aux->quotes;
@@ -25,16 +13,10 @@ void	exec_builtin_hdoc(t_mini_shell *in, t_list *arg_list)
 	{
 		if (in->split_in && (is_builtin(in) || is_builtin2(in)))
 		{
-			while (in->split_in[i])
-			{
+			while (in->split_in[++i])
 				if (!(ft_strncmp(in->split_in[i], "<<", 3))
 					&& in->q_state[i] == 0)
-				{
-					remove_redir(in, i);
-					i--;
-				}
-				i++;
-			}
+					remove_redir(in, i--);
 			exec_args(in);
 		}
 	}

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(minishell_ncallie_cmake C)
+project(minishell C)
 
 add_compile_options(-Wall -Wextra -Werror)
 set(CMAKE_C_STANDARD 99)
@@ -39,16 +39,16 @@ set(SRC_LEXER srcs/lexer/check_args.c
 		srcs/lexer/split_args.c
 		srcs/lexer/token.c)
 
-set(LIBFT libft/del_str_pos.c
-		libft/free_matrix.c
+set(LIBFT libft/ft_del_str_pos.c
+		libft/ft_matrix_free.c
 		libft/ft_atoi.c
 		libft/ft_bzero.c
 		libft/ft_isalnum.c
 		libft/ft_isalpha.c
 		libft/ft_isdigit.c
 		libft/ft_itoa.c
-		libft/ft_lst_free.c
-		libft/ft_lst_sort.c
+		libft/ft_lstfree.c
+		libft/ft_lstsort.c
 		libft/ft_lstadd_back.c
 		libft/ft_lstclear.c
 		libft/ft_lstdelone.c
@@ -71,9 +71,9 @@ set(LIBFT libft/del_str_pos.c
 		libft/ft_strlen.c
 		libft/ft_strncmp.c
 		libft/ft_substr.c
-		libft/list_to_matrix.c
-		libft/matrix_dup.c
-		libft/matrix_len.c
+		libft/ft_lstmatrix.c
+		libft/ft_matrix_dup.c
+		libft/ft_matrix_len.c
 		libft/ft_mem_alloc.c
 		libft/ft_lstlast.c)
 
